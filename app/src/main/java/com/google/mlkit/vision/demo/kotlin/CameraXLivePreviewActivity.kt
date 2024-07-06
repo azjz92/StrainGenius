@@ -16,6 +16,8 @@
 
 package com.google.mlkit.vision.demo.kotlin
 
+import com.google.mlkit.vision.demo.kotlin.textdetector.StrainRecognitionProcessor // added strqinrecognition processor which is a new file created
+
 import android.content.Intent
 import android.os.Build.VERSION_CODES
 import android.os.Bundle
@@ -105,6 +107,8 @@ class CameraXLivePreviewActivity :
     }
     val spinner = findViewById<Spinner>(R.id.spinner)
     val options: MutableList<String> = ArrayList()
+    options.add(STRAIN_RECOGNITION) //add strain recognition options
+
     options.add(OBJECT_DETECTION)
     options.add(OBJECT_DETECTION_CUSTOM)
     options.add(CUSTOM_AUTOML_OBJECT_DETECTION)
@@ -360,6 +364,10 @@ class CameraXLivePreviewActivity :
           }
           SELFIE_SEGMENTATION -> SegmenterProcessor(this)
           FACE_MESH_DETECTION -> FaceMeshDetectorProcessor(this)
+          STRAIN_RECOGNITION -> { //added strain recognition stuff
+            Log.i(TAG, "Using Strain Recognition Processor")
+            StrainRecognitionProcessor(this, TextRecognizerOptions.Builder().build())
+          }
           else -> throw IllegalStateException("Invalid model name")
         }
       } catch (e: Exception) {
@@ -427,6 +435,7 @@ class CameraXLivePreviewActivity :
     private const val SELFIE_SEGMENTATION = "Selfie Segmentation"
     private const val FACE_MESH_DETECTION = "Face Mesh Detection (Beta)"
 
+    private const val STRAIN_RECOGNITION = "Strain Recognition" //added strain recognition
     private const val STATE_SELECTED_MODEL = "selected_model"
   }
 }
