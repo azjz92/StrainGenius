@@ -107,7 +107,7 @@ class CameraXLivePreviewActivity :
     }
     val spinner = findViewById<Spinner>(R.id.spinner)
     val options: MutableList<String> = ArrayList()
-    options.add(STRAIN_RECOGNITION) //add strain recognition options
+    options.add(STRAIN_RECOGNITION) //add strain recognition options to the drop down spinner!
 
     options.add(OBJECT_DETECTION)
     options.add(OBJECT_DETECTION_CUSTOM)
