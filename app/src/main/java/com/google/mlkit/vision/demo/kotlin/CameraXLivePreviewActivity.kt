@@ -364,9 +364,9 @@ class CameraXLivePreviewActivity :
           }
           SELFIE_SEGMENTATION -> SegmenterProcessor(this)
           FACE_MESH_DETECTION -> FaceMeshDetectorProcessor(this)
-          STRAIN_RECOGNITION -> { //added strain recognition stuff
+          STRAIN_RECOGNITION -> {
             Log.i(TAG, "Using Strain Recognition Processor")
-            StrainRecognitionProcessor(this, TextRecognizerOptions.Builder().build())
+            StrainRecognitionProcessor(this)
           }
           else -> throw IllegalStateException("Invalid model name")
         }
