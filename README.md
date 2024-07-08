@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This ML Kit Quickstart app demonstrates how to use and integrate various vision based ML Kit features into your app.
+This is a modified ML Kit Quickstart app we will only be using the text recognition app, this is a W.I.P. Select the Kotlin>CameraXlivepreviewActivity> then " strain recognition" option in the spinner menu to get started. We will be able to scan any strain in the leafly database and then get the information of said strain (mainly reviews and ratings right now) before furthur features are added. 
 
 ## Feature List
 
