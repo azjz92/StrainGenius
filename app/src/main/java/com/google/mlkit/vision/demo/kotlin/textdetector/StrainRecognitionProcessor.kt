@@ -27,12 +27,17 @@ class StrainRecognitionProcessor(context: Context) : VisionProcessorBase<Text>(c
 
     override fun onSuccess(results: Text, graphicOverlay: GraphicOverlay) {
         Log.d(TAG, "On-device Strain recognition successful")
+        Log.d(TAG, "Recognized text: ${results.text}")
 
         for (textBlock in results.textBlocks) {
             for (line in textBlock.lines) {
+                Log.d(TAG, "Checking line: ${line.text}")
                 val strainInfo = StrainDatabase.findStrain(line.text)
                 if (strainInfo != null) {
+                    Log.d(TAG, "Matched strain: ${strainInfo.name}")
                     graphicOverlay.add(StrainInfoGraphic(graphicOverlay, strainInfo, line.boundingBox))
+                } else {
+                    Log.d(TAG, "No matching strain found for: ${line.text}")
                 }
             }
         }
